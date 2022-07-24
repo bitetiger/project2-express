@@ -3,13 +3,17 @@ var router = express.Router();
 var mysql      = require('mysql');
 var bodyParser = require('body-parser');
 const app = require('../app');
+const awsParamStore = require( 'aws-param-store' );
 
 // app.use(bodyParser.urlencoded({extended: true}))
 
+ 
+let db_host = awsParamStore.getParameterSync( '/project2/db_host',{ region: 'ap-northeast-2' } );
+
 var connection = mysql.createConnection({
-  host     : 'd',
+  host     : db_host.Value,
   user     : 'admin',
-  password : '6',
+  password : '65896589',
   database : 'express_db'
 });
 
